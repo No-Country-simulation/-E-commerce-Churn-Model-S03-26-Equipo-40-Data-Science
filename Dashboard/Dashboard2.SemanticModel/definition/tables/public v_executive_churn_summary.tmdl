@@ -1,0 +1,71 @@
+table 'public v_executive_churn_summary'
+	lineageTag: d8ad8406-ac6c-47a2-b5ad-03e51a3514a7
+
+	column risk_segment
+		dataType: string
+		lineageTag: 0246f96a-13e7-4962-b4b8-0b198c20c15b
+		summarizeBy: none
+		sourceColumn: risk_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f6863d6-fa4a-4b13-9f0e-5604668f6a83
+		summarizeBy: sum
+		sourceColumn: total_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_churn_risk_pct
+		dataType: double
+		lineageTag: 5dbc7c68-0c60-4db3-887a-047626466cf1
+		summarizeBy: sum
+		sourceColumn: avg_churn_risk_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_monetary_exposure
+		dataType: double
+		lineageTag: 0d734c13-7e29-4b48-bcc7-67d5f79cf80e
+		summarizeBy: sum
+		sourceColumn: total_monetary_exposure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_monetary_per_customer
+		dataType: double
+		lineageTag: e3c81f6a-3a9b-4772-8647-d7c20a37c056
+		summarizeBy: sum
+		sourceColumn: avg_monetary_per_customer
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pct_of_total_customers
+		dataType: double
+		lineageTag: b276292d-1075-4578-b1ac-f65dd755ea2a
+		summarizeBy: sum
+		sourceColumn: pct_of_total_customers
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public v_executive_churn_summary' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("aws-1-us-west-2.pooler.supabase.com:5432", "postgres"),
+				    public_v_executive_churn_summary = Origen{[Schema="public",Item="v_executive_churn_summary"]}[Data]
+				in
+				    public_v_executive_churn_summary
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+{
+  "name": "Enterprise Insights Dark",
+  "dataColors": ["#002D5E", "#E63946", "#F1FAEE", "#A8DADC", "#457B9D", "#34495E", "#D35400", "#27AE60"],
+  "background": "#F4F7F6",
+  "foreground": "#002D5E",
+  "tableAccent": "#002D5E",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{"show": true, "color": {"solid": {"color": "#FFFFFF"}}, "transparency": 0}],
+        "border": [{"show": true, "color": {"solid": {"color": "#E6E6E6"}}, "radius": 8}],
+        "visualHeader": [{"show": true}]
+      }
+    }
+  }
+}

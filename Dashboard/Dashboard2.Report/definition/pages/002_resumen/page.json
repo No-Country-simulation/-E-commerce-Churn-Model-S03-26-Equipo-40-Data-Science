@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json",
+  "name": "002_resumen",
+  "displayName": "1. Executive Overview",
+  "displayOption": "FitToWidth",
+  "height": 720.0,
+  "width": 1280.0
+}

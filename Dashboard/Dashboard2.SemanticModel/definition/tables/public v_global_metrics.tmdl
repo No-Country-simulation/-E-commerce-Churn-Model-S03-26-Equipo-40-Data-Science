@@ -1,0 +1,75 @@
+table 'public v_global_metrics'
+	lineageTag: e9844964-1c9d-4556-bc40-8c832d8c6833
+
+	column total_customers_analyzed
+		dataType: int64
+		formatString: 0
+		lineageTag: 4417f12b-4b42-4d56-a795-faaa5effda78
+		summarizeBy: sum
+		sourceColumn: total_customers_analyzed
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_churned
+		dataType: int64
+		formatString: 0
+		lineageTag: 6fa947c1-628f-4911-bdf7-9fb8bf62ee0a
+		summarizeBy: sum
+		sourceColumn: total_churned
+
+		annotation SummarizationSetBy = Automatic
+
+	column overall_churn_rate_pct
+		dataType: double
+		lineageTag: 035f249b-0d4b-4165-8cc0-2f36ad022913
+		summarizeBy: sum
+		sourceColumn: overall_churn_rate_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column high_risk_monetary_exposure
+		dataType: double
+		lineageTag: 33e7cdbc-6c0a-4872-944d-b559b10e8eca
+		summarizeBy: sum
+		sourceColumn: high_risk_monetary_exposure
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vips_at_risk_count
+		dataType: int64
+		formatString: 0
+		lineageTag: d4591534-2efe-47dd-9f83-e93b62b188f1
+		summarizeBy: sum
+		sourceColumn: vips_at_risk_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_model_run
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 52c5b7f9-0c82-46d1-97c2-99113866dc9b
+		summarizeBy: none
+		sourceColumn: last_model_run
+
+		variation Variación
+			isDefault
+			relationship: 419c779c-28ea-4dc0-aa0e-9405329eb733
+			defaultHierarchy: LocalDateTable_799ed1d9-852e-4d1e-9a46-4f0b28499c00.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'public v_global_metrics' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("aws-1-us-west-2.pooler.supabase.com:5432", "postgres"),
+				    public_v_global_metrics = Origen{[Schema="public",Item="v_global_metrics"]}[Data]
+				in
+				    public_v_global_metrics
+
+	annotation PBI_ResultType = Table
+

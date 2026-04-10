@@ -1,0 +1,80 @@
+table 'public v_vips_at_risk'
+	lineageTag: 63df074c-8861-4f76-9f81-f9fa8bec33cf
+
+	column customer_id
+		dataType: string
+		lineageTag: f71de9bc-bb47-4276-aa1e-5a88e51a5128
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_segment
+		dataType: string
+		lineageTag: 3db23f20-8453-4450-91dd-fe441a95a4cb
+		summarizeBy: none
+		sourceColumn: risk_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_risk_pct
+		dataType: double
+		lineageTag: b5540861-dac0-4d11-a558-a4d6ac599c2c
+		summarizeBy: sum
+		sourceColumn: churn_risk_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lifetime_value
+		dataType: double
+		lineageTag: 14b7e8e0-dac5-43ca-93e6-b1e4e32e5ad8
+		summarizeBy: sum
+		sourceColumn: lifetime_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column days_inactive
+		dataType: double
+		lineageTag: 1ea19796-c75e-483f-ba74-87bb00278cd9
+		summarizeBy: sum
+		sourceColumn: days_inactive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_purchases
+		dataType: double
+		lineageTag: 62b58ed0-c381-476e-a6dc-85279b2e1353
+		summarizeBy: sum
+		sourceColumn: total_purchases
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rfm_score
+		dataType: double
+		lineageTag: ae316887-ae65-4237-aa5e-ad0f2bd3b9af
+		summarizeBy: sum
+		sourceColumn: rfm_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public v_vips_at_risk' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("aws-1-us-west-2.pooler.supabase.com:5432", "postgres"),
+				    public_v_vips_at_risk = Origen{[Schema="public",Item="v_vips_at_risk"]}[Data]
+				in
+				    public_v_vips_at_risk
+
+	annotation PBI_ResultType = Table
+

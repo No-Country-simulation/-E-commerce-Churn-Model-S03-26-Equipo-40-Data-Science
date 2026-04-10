@@ -1,0 +1,25 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-EC
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["public v_customer_distribution","public v_executive_churn_summary","public v_global_metrics","public v_top_priority_customers","public v_value_risk_matrix","public v_vips_at_risk"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'public v_customer_distribution'
+ref table 'public v_executive_churn_summary'
+ref table 'public v_global_metrics'
+ref table DateTableTemplate_0224b89e-8835-4d75-b81b-1a9e04d7af21
+ref table LocalDateTable_799ed1d9-852e-4d1e-9a46-4f0b28499c00
+ref table 'public v_top_priority_customers'
+ref table 'public v_value_risk_matrix'
+ref table 'public v_vips_at_risk'
+
+ref cultureInfo es-MX
+

@@ -1,0 +1,88 @@
+table 'public v_top_priority_customers'
+	lineageTag: 97c2b15a-9229-4c0d-be26-46db68d02f4b
+
+	column customer_id
+		dataType: string
+		lineageTag: 06106b97-1f55-4ce0-8d3e-7a37b885626d
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_level
+		dataType: string
+		lineageTag: 162a6ec4-c255-45a6-a380-f46a438d1114
+		summarizeBy: none
+		sourceColumn: customer_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_segment
+		dataType: string
+		lineageTag: d948e3bd-526d-4e15-8920-d09aa92097c1
+		summarizeBy: none
+		sourceColumn: risk_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_risk_pct
+		dataType: double
+		lineageTag: d3e341e1-dabb-48e3-9a9a-80677f0911a1
+		summarizeBy: sum
+		sourceColumn: churn_risk_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lifetime_value
+		dataType: double
+		lineageTag: d635e472-3935-4ced-9286-396197930829
+		summarizeBy: sum
+		sourceColumn: lifetime_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column expected_loss
+		dataType: double
+		lineageTag: 540f6e91-c19f-4f58-b25e-0bf84ec27ac4
+		summarizeBy: sum
+		sourceColumn: expected_loss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column days_inactive
+		dataType: double
+		lineageTag: ccca979c-51cb-4407-859f-d7ab1b827a38
+		summarizeBy: sum
+		sourceColumn: days_inactive
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rfm_score
+		dataType: double
+		lineageTag: 79689d94-7101-48c7-bbc4-316c9dd9559a
+		summarizeBy: sum
+		sourceColumn: rfm_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public v_top_priority_customers' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("aws-1-us-west-2.pooler.supabase.com:5432", "postgres"),
+				    public_v_top_priority_customers = Origen{[Schema="public",Item="v_top_priority_customers"]}[Data]
+				in
+				    public_v_top_priority_customers
+
+	annotation PBI_ResultType = Table
+

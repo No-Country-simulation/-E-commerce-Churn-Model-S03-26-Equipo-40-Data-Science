@@ -1,0 +1,35 @@
+relationship 419c779c-28ea-4dc0-aa0e-9405329eb733
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'public v_global_metrics'.last_model_run
+	toColumn: LocalDateTable_799ed1d9-852e-4d1e-9a46-4f0b28499c00.Date
+
+relationship AutoDetected_83fd2e10-5ee2-4520-bd95-6a223308bfca
+	fromColumn: 'public v_customer_distribution'.risk_segment
+	toColumn: 'public v_executive_churn_summary'.risk_segment
+
+relationship AutoDetected_7ca9c72c-2ab6-4644-95ce-ff8439bfe503
+	fromColumn: 'public v_top_priority_customers'.risk_segment
+	toColumn: 'public v_executive_churn_summary'.risk_segment
+
+relationship AutoDetected_48361ca0-3d1b-48b8-aa59-222c7ae2ccb4
+	fromColumn: 'public v_value_risk_matrix'.risk_segment
+	toColumn: 'public v_executive_churn_summary'.risk_segment
+
+relationship AutoDetected_5c0f9b2b-17ae-410f-a453-53c6a8a13096
+	fromColumn: 'public v_vips_at_risk'.risk_segment
+	toColumn: 'public v_executive_churn_summary'.risk_segment
+
+relationship AutoDetected_f45563cb-8c66-4c57-b5d2-98c76da431c6
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'public v_top_priority_customers'.customer_id
+	toColumn: 'public v_value_risk_matrix'.customer_id
+
+relationship AutoDetected_23f10313-58f2-4fa2-a7da-e28b649122fe
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'public v_vips_at_risk'.customer_id
+	toColumn: 'public v_value_risk_matrix'.customer_id
+

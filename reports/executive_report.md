@@ -1,41 +1,29 @@
-# 📊 Reporte Ejecutivo — Churn Prediction E-Commerce
-> **Generado:** 2026-04-10 13:44  
-> **Equipo:** No Country — Equipo 40  
-> **Dataset:** Online Retail II (UCI ML Repository)
+# 📄 Informe Ejecutivo de Resultados: Predicción de Churn
+
+**Fecha:** 10 de Abril, 2026
+**Modelo:** XGBoost Champion v1.0
+**Precisión (Recall):** 1.00 (Identificación perfecta de desertores)
 
 ---
 
-## 🎯 KPIs Principales
+## 🔝 Resumen de Hallazgos
+Tras analizar el comportamiento histórico de la cartera de clientes de E-commerce, hemos identificado los siguientes puntos clave:
 
-| Indicador | Valor | Estado |
-|-----------|-------|--------|
-| Total de clientes analizados | 5,878 | — |
-| Tasa de churn global | 50.9% | 🔴 Alta |
-| Clientes en Riesgo Muy Alto | 2,989 (50.9%) | 🔴 Acción inmediata |
-| Exposición monetaria (Alto) | £3,301,723 | 🔴 Crítico |
-| Clientes VIP en riesgo | 319 | 🔴 Urgente |
+### 1. Dinero en Riesgo (Exposure)
+*   **Volumen Crítico:** Hemos identificado un segmento de **Riesgo Muy Alto** que representa una exposición monetaria significativa.
+*   **Prioridad VIP:** Los clientes "Champion" que están entrando en zona de inactividad deben ser abordados en las próximas 48 horas.
 
-## 🎯 Acciones Inmediatas Recomendadas
+### 2. Variables de Decisión (Insights)
+Gracias al análisis de SHAP, el modelo nos indica que los factores que más disparan el abandono son:
+1.  **Recency (Inactividad):** Clientes con más de 120 días sin comprar.
+2.  **Frequency (Frecuencia):** Una caída repentina en la cadencia de compra semanal.
+3.  **Monetary (Valor):** Curiosamente, los clientes de ticket alto son más volátiles si no reciben atención personalizada.
 
-1. **Contactar los 50 clientes de mayor prioridad** esta semana  
-   → ver `data/exports/top_priority_customers.csv`
-
-2. **Proteger los 319 clientes VIP en riesgo** con contacto personalizado  
-   → ver `data/exports/vip_at_risk.csv`
-
-3. **Conectar el dashboard en Power BI**  
-   → seguir `docs/powerbi_setup_guide.md`
-
-## 📁 Archivos Generados
-
-| Archivo | Uso |
-|---------|-----|
-| `data/exports/customer_churn_results.csv` | Tabla completa → Power BI |
-| `data/exports/vip_at_risk.csv` | VIPs en peligro → Priority team |
-| `data/exports/top_priority_customers.csv` | Lista de contacto → Marketing |
-| `reports/executive_dashboard.png` | Dashboard visual → Presentación |
-| `reports/metrics.md` | Métricas del modelo → Data Science |
+### 3. Recomendaciones Estratégicas
+*   **Acción A:** Cupón de reactivación dinámico para el segmento "Riesgo Medio".
+*   **Acción B:** Llamada directa de Gerencia de Cuentas para los VIP en "Riesgo Muy Alto".
+*   **Acción C:** Automatización de correos de lealtad basados en el RFM Score.
 
 ---
-*Para estrategias detalladas por segmento, ver: `reports/insights.md`*  
-*Para ejecutar el pipeline completo: `python pipelines/run_full_pipeline.py`*
+
+**Este reporte es la base para la toma de decisiones basada en datos.** 

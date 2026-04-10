@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visual/1.1.0/schema.json",
+  "name": "titulo_principal",
+  "position": {
+    "x": 100,
+    "y": 100,
+    "z": 1,
+    "width": 800,
+    "height": 150
+  },
+  "visual": {
+    "visualType": "textbox",
+    "query": {},
+    "visualDataItems": [],
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "EXECUTIVE CHURN ANALYSIS",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "36pt",
+                      "fontFamily": "Segoe UI Semibold",
+                      "color": { "solid": { "color": "#002D5E" } }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

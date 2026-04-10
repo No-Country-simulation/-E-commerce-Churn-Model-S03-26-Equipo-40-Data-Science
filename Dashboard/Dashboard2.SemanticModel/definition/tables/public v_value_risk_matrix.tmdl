@@ -1,0 +1,88 @@
+table 'public v_value_risk_matrix'
+	lineageTag: ea740b47-0e49-47a8-9000-facf1add7f72
+
+	column customer_id
+		dataType: string
+		lineageTag: 6b60fc3b-36b9-45f7-a373-eb489d03ed0a
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_level
+		dataType: string
+		lineageTag: d7123fcd-ad0e-4d5c-80e4-06c3aced8ed3
+		summarizeBy: none
+		sourceColumn: customer_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column risk_segment
+		dataType: string
+		lineageTag: 9c7d476c-d597-4c22-af0e-39262d7cfc3d
+		summarizeBy: none
+		sourceColumn: risk_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column monetary
+		dataType: double
+		lineageTag: a08abb2b-d392-4c82-97dd-9efe191c0163
+		summarizeBy: sum
+		sourceColumn: monetary
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column churn_probability
+		dataType: double
+		lineageTag: a0ae6749-ba94-4988-afb1-00201b68542c
+		summarizeBy: sum
+		sourceColumn: churn_probability
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recency
+		dataType: double
+		lineageTag: 8368a891-306d-4914-b666-4f8220f3da16
+		summarizeBy: sum
+		sourceColumn: recency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column frequency
+		dataType: double
+		lineageTag: 4dc86513-f995-49af-84af-315b6fe345c9
+		summarizeBy: sum
+		sourceColumn: frequency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column rfm_score
+		dataType: double
+		lineageTag: 9842ae33-2d5d-44e7-999f-f8386439880f
+		summarizeBy: sum
+		sourceColumn: rfm_score
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'public v_value_risk_matrix' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database("aws-1-us-west-2.pooler.supabase.com:5432", "postgres"),
+				    public_v_value_risk_matrix = Origen{[Schema="public",Item="v_value_risk_matrix"]}[Data]
+				in
+				    public_v_value_risk_matrix
+
+	annotation PBI_ResultType = Table
+

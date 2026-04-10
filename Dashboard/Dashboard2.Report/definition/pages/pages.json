@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json",
+  "pageOrder": [
+    "001_portada",
+    "002_resumen",
+    "003_ml_pred",
+    "004_valor_riesgo",
+    "005_rfm",
+    "006_accion",
+    "e33fc01882ad61995c24"
+  ],
+  "activePageName": "001_portada"
+}
